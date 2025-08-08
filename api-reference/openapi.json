@@ -1,94 +1,116 @@
 {
-  "openapi": "3.1.0",
+  "openapi": "3.0.3",
   "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
-    "license": {
-      "name": "MIT"
-    },
-    "version": "1.0.0"
+    "title": "API",
+    "version": "1.0.0",
+    "contact": {}
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
-    }
-  ],
-  "security": [
-    {
-      "bearerAuth": []
+      "url": "https://app.inklink.dev"
     }
   ],
   "paths": {
-    "/plants": {
-      "get": {
-        "description": "Returns all plants from the system that the user has access to",
+    "/request": {
+      "post": {
+        "summary": "Create Request",
+        "description": "Create Request",
+        "operationId": "createRequest",
         "parameters": [
           {
-            "name": "limit",
-            "in": "query",
-            "description": "The maximum number of results to return",
+            "name": "x-api-key",
+            "in": "header",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string",
+              "example": "secret_xxxx"
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "Plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "proof_request_description": {
+                    "type": "string",
+                    "example": "Prove this user visited Google Homepage"
+                  }
+                }
+              },
+              "examples": {
+                "Create Request": {
+                  "value": {
+                    "addToChain": true,
+                    "allowOptionalClaimsRemoval": true,
+                    "badgeImageUrl": "string",
+                    "category": "CUSTOM",
+                    "claims": [
+                      {
+                        "description": "Income Level",
+                        "property": "income_level",
+                        "required": true
+                      }
+                    ],
+                    "completionRedirectUrl": "string",
+                    "completionText": "string",
+                    "coverPageBgColor": "#000000",
+                    "coverPageCtaButtonText": "Continue",
+                    "coverPageDataSource": "[Last capture screen domain name]",
+                    "coverPageNote": "string",
+                    "coverPageRequesterAliasFormat": "FULL_NAME",
+                    "flow": [
+                      {
+                        "captureButtonText": "string",
+                        "captureConfirmationText": "string",
+                        "index": 0,
+                        "instruction": "string",
+                        "noteToAI": "string",
+                        "url": "string"
+                      }
+                    ],
+                    "guide": "string",
+                    "hideGuide": true,
+                    "hideRedaction": true,
+                    "noteToSelf": "string",
+                    "notificationContent": "string",
+                    "proofDescription": "string",
+                    "proofExampleUrl": "string",
+                    "proofTitle": "string",
+                    "secureBrowserIntroScreen": "NONE",
+                    "secureBrowserNavigation": "ALL",
+                    "userValidation": "STRICT"
+                  }
+                },
+                "Create Request (min)": {
+                  "value": {
+                    "proof_request_description": "Prove this user visited Google Homepage"
                   }
                 }
               }
             }
-          },
-          "400": {
-            "description": "Unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
           }
-        }
-      },
-      "post": {
-        "description": "Creates a new plant in the store",
-        "requestBody": {
-          "description": "Plant to add to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
-          },
-          "required": true
         },
         "responses": {
           "200": {
-            "description": "plant response",
+            "description": "200 / 200",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Plant"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "object",
+                  "properties": {
+                    "request_template_id": {
+                      "type": "string",
+                      "example": "reqtlp_xxxx"
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "value": {
+                      "request_template_id": "reqtlp_xxxx"
+                    }
+                  }
                 }
               }
             }
@@ -96,122 +118,251 @@
         }
       }
     },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
+    "/request-session-id": {
+      "post": {
+        "summary": "Create Request Session Id",
+        "description": "Create Request Session Id",
+        "operationId": "createRequestSessionId",
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "description": "ID of plant to delete",
-            "required": true,
+            "name": "x-api-key",
+            "in": "header",
             "schema": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string",
+              "example": ""
             }
           }
         ],
-        "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "webhooks": {
-    "/plant/webhook": {
-      "post": {
-        "description": "Information about a new plant added to the store",
         "requestBody": {
-          "description": "Plant added to the store",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPlant"
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "email": {
+                        "type": "string",
+                        "example": "jc@inklink.com"
+                      }
+                    }
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "example": "req_CQZDkk3toZY2yAC2QwG2g"
+                  },
+                  "return_url": {
+                    "type": "string",
+                    "example": "https://myapp.co/complete?id=1234"
+                  }
+                }
+              },
+              "examples": {
+                "Create Request Session Id": {
+                  "value": {
+                    "data": {
+                      "email": "jc@inklink.com"
+                    },
+                    "request_id": "req_CQZDkk3toZY2yAC2QwG2g",
+                    "return_url": "https://myapp.co/complete?id=1234"
+                  }
+                }
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Return a 200 status to indicate that the data was received successfully"
+            "description": "200",
+            "headers": {
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 01 Jul 2025 00:21:25 GMT"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              },
+              "Transfer-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "chunked"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "request_url": {
+                      "type": "string",
+                      "example": "https://app.inklink.dev/request/req_CQZDkk3toZY2yAC2QwG2g?session_id=01JZ1NR8DB1GB5MBF8N0KE3DFS"
+                    },
+                    "session_id": {
+                      "type": "string",
+                      "example": "01JZ1NR8DB1GB5MBF8N0KE3DFS"
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "value": {
+                      "request_url": "https://app.inklink.dev/request/req_CQZDkk3toZY2yAC2QwG2g?session_id=01JZ1NR8DB1GB5MBF8N0KE3DFS",
+                      "session_id": "01JZ1NR8DB1GB5MBF8N0KE3DFS"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
+    },
+    "/request-result/{request_template_id}": {
+      "get": {
+        "summary": "Get Request Result",
+        "description": "Get Request Result",
+        "operationId": "getRequestResult",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": ""
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "example": "secret_test_d64fa9b4-c7fc-46c4-a7e0-1caad44f6ed2"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "examples": {
+                "Get Request Result": {
+                  "value": ""
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "acceptance_level": {
+                      "type": "string",
+                      "example": "high"
+                    },
+                    "acceptance_reason": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "claims": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "property": {
+                            "type": "string",
+                            "example": "placement_in_gender"
+                          },
+                          "value": {
+                            "type": "string",
+                            "example": "548th of 1172"
+                          }
+                        }
+                      },
+                      "example": [
+                        {
+                          "property": "placement_in_gender",
+                          "value": "548th of 1172"
+                        }
+                      ]
+                    },
+                    "confidence_level": {
+                      "type": "string",
+                      "example": "low"
+                    },
+                    "confidence_reason": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "PASSED"
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "value": {
+                      "acceptance_level": "high",
+                      "acceptance_reason": "string",
+                      "claims": [
+                        {
+                          "property": "placement_in_gender",
+                          "value": "548th of 1172"
+                        }
+                      ],
+                      "confidence_level": "low",
+                      "confidence_reason": "string",
+                      "status": "PASSED"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "request_template_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "req_01JZ64C16A8G2JVF79B0P5XD3A"
+          }
+        }
+      ]
     }
   },
   "components": {
-    "schemas": {
-      "Plant": {
-        "required": [
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "description": "The name of the plant",
-            "type": "string"
-          },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
-          }
-        }
-      },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
-          },
-          {
-            "required": [
-              "id"
-            ],
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ]
-      },
-      "Error": {
-        "required": [
-          "error",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "error": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "message": {
-            "type": "string"
-          }
-        }
-      }
-    },
     "securitySchemes": {
       "bearerAuth": {
         "type": "http",
         "scheme": "bearer"
       }
     }
-  }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "tags": []
 }
