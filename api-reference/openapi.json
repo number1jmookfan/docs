@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://app.inklink.dev"
+      "url": "https://app.inklink.dev/api"
     }
   ],
   "paths": {
@@ -351,18 +351,7 @@
       ]
     }
   },
-  "components": {
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
-      }
-    }
-  },
-  "security": [
-    {
-      "bearerAuth": []
-    }
-  ],
+  "components": {},
+  "security": [],
   "tags": []
 }

@@ -1,0 +1,32 @@
+---
+title: "Authentication"
+---
+
+## API Keys
+
+InkLink uses API key authentication for all API requests. You'll receive two sets of credentials:
+
+| Environment    | Key Format         | Usage                    |
+| -------------- | ------------------ | ------------------------ |
+| **Sandbox**    | `secret_test_xxxx` | Development and testing  |
+| **Production** | `secret_live_xxxx` | Live production requests |
+
+## Security Requirements
+
+**⚠️ Important Security Guidelines:**
+
+- API keys must **only be used server-side**
+- Never expose API keys in client-side code
+- All API requests must include the authentication
+  header:
+  `x-api-key: secret_xxx`
+
+## Requesting Access
+
+To obtain API credentials:
+
+1. Contact the InkLink team
+2. Specify your intended use case
+3. Receive sandbox and production keys
+
+_Note: Self-service key management will be available in the admin dashboard in a future release._

@@ -15,10 +15,10 @@
         "groups": [
           {
             "group": "Getting started",
-            "pages": ["index", "quickstart", "development"]
+            "pages": ["index", "authentication", "quickstart"]
           },
           {
-            "group": "Customization",
+            "group": "Requests",
             "pages": ["essentials/settings", "essentials/navigation"]
           },
           {
@@ -44,10 +44,6 @@
         "tab": "API reference",
         "groups": [
           {
-            "group": "API documentation",
-            "pages": ["api-reference/introduction"]
-          },
-          {
             "group": "Endpoint examples",
             "pages": [
               "api-reference/endpoint/create",
@@ -57,26 +53,7 @@
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
     "light": "/logo/light.svg",
