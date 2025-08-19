@@ -1,0 +1,49 @@
+---
+title: "Retrieving Results"
+---
+
+After a user completes a request, retrieve the results using the `request_id` and optionally a `session_id` (if you want results from a specific session).
+
+**Request**
+
+```Typescript
+GET https://app.inklink.com/api/request-result/req_id?session_id=sid_xxx
+```
+
+**Response**
+
+```JSON
+{
+  "status": "PASSED",
+  "claims": [
+    {
+      "property": "account_holder_name",
+      "value": "John Doe"
+    },
+    {
+      "property": "account_balance",
+      "value": "$12,345.67"
+    }
+  ],
+  "acceptance_level": "HIGH",
+  "acceptance_reason": "All validation criteria met",
+  "credibility_level": "HIGH",
+  "credibility_reason": "Clear screenshot with matching user data",
+}
+```
+
+**Status Values**
+
+| Status    | Description                         |
+| --------- | ----------------------------------- |
+| `PASSED`  | Verification completed successfully |
+| `FAILED`  | Verification failed validation      |
+| `PENDING` | Verification in progress            |
+| `EXPIRED` | Session expired                     |
+
+**Credibility Levels**
+| Level | Color | Description | Recommended Action |
+| - | - |-|-|
+| `HIGH` | Verification completed successfully | Ready for auto-approval | Accept automatically |
+| `MEDIUM` | Verification failed validation | Minor issues detected | Consider spot-check |
+| `LOW` | Verification in progress | Significant Issues | Manual review required |

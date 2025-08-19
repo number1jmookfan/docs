@@ -1,0 +1,69 @@
+---
+title: "Webhooks"
+---
+
+InkLink sends real-time notifications for request status changes via webhooks.
+
+## Configuration
+
+1. Set the `webhooks_url` when creating a request template
+2. Ensure your endpoint uses HTTPS with a valid certificate
+3. Implement signature verification for security
+
+## Webhook Events
+
+| Status              | Description              | Payload                |
+| ------------------- | ------------------------ | ---------------------- |
+| `request.created`   | Request initiated        | Basic request info     |
+| `request.pending`   | User actively completing | Progress update        |
+| `request.completed` | Verification finished    | Full results available |
+
+## Example Event Payload Structure
+
+```JSON
+{
+  "event": "request.completed",
+  "request_id": "req_xxx",
+  "session_id": "sid_xxx",
+  "processed_at": "2025-06-11T14:30:00Z"
+}
+```
+
+## Security & Validation
+
+All webhooks include an HMAC-SHA256 signature in the x-hmac-signature header.
+
+**Signature Verification (Node.js)**
+
+```Javascript
+const crypto = require('crypto');
+
+function validateWebhook(req, res) {
+  const receivedSignature = req.headers['x-hmac-signature'];
+
+  // Create expected signature
+  const expectedSignature = crypto
+    .createHmac('sha256', process.env.SECRET_API_KEY)
+    .update(req.body) // Raw request body
+    .digest('hex');
+
+  // Secure comparison
+  const isValid = crypto.timingSafeEqual(
+    Buffer.from(receivedSignature, 'hex'),
+    Buffer.from(expectedSignature, 'hex')
+  );
+
+  if (!isValid) {
+    return res.status(401).json({ error: 'Invalid signature' });
+  }
+
+  // Process webhook...
+}
+```
+
+## Delivery Guarantees
+
+- **At-least-once delivery** - Design endpoints to be idempotent
+- **5-second timeout** - Respond quickly with 2xx status
+- **Exponential backoff** - Up to 7 retry attempts
+- **Unordered delivery** - Don't assume chronological order

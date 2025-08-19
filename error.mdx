@@ -1,0 +1,38 @@
+---
+title: "Error Handling"
+---
+
+## HTTP Status Codes
+
+| Code | Meaning      | Action               |
+| ---- | ------------ | -------------------- |
+| 200  | Success      | Process response     |
+| 400  | Bad Request  | Check request format |
+| 401  | Unauthorized | Verify API key       |
+| 404  | Not Found    | Check resource ID    |
+| 429  | Rate Limited | Implement backoff    |
+| 500  | Server Error | Retry with backoff   |
+
+## Error Response Format
+
+```JSON
+{
+  "error": {
+    "code": "REQUEST_CREATION_FAILED",
+    "message": "Request creation failed",
+    "details": {
+      "field": "claims[0].property",
+      "reason": "Invalid character in property name"
+    }
+  }
+}
+```
+
+## Common Error Codes
+
+| Code                      | Description             | Resolution                    |
+| ------------------------- | ----------------------- | ----------------------------- |
+| `INVALID_API_KEY`         | Authentication Failed   | Check API key and environment |
+| `SESSION_EXPIRED`         | Request session expired | Create new session            |
+| `REQUEST_NOT_FOUND`       | Invalid request ID      | Verify request exists         |
+| `REQUEST_CREATION_FAILED` | Request creation error  | Check request parameters      |
