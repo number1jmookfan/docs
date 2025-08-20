@@ -30,7 +30,7 @@
             "group": "Endpoint examples",
             "pages": [
               "api-reference/endpoint/create",
-              "api-reference/endpoint/createSession",
+              "api-reference/endpoint/create_session",
               "api-reference/endpoint/get"
             ]
           }

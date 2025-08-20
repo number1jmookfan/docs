@@ -2,22 +2,13 @@
 title: "Requests"
 ---
 
-InkLink provides a **hosted** flow solution that offers the simplest integration path, with InkLink handling the entire request flow.
-
-## Benefits
-
-- **Zero Frontend Development** - No SDK or UI components needed
-- **Minimal Integration Complexity** - Simple redirect-based flow
-- **No SDK Overhead** - Keeps your application lightweight
-- **Automatic Updates** - Always get the latest InkLink features
-
 ### Creating a Request
 
-Request defines the structure and requirements of your data request flow. You can create requests through our UI builder or programmatically via API. In return, you will receive a `request_url` that you can share with users to request and verify their data.
+Requests define the structure and requirements of your data verification flow. You can create requests through our UI builder or programmatically via API. In return, you will receive a `request_url` that you can share with users to verify their data.
 
 ## Creating Request via UI
 
-Our visual Proof Request builder UI available in the InkLink WebApp provides an intuitive interface for creating request without code.
+Our Proof Request Builder UI available in the InkLink WebApp provides an interface for creating requests without code.
 
 ### Request Builder Sections
 
@@ -28,7 +19,7 @@ Our visual Proof Request builder UI available in the InkLink WebApp provides an 
 Define the core requirements of your verification:
 | Field | Purpose | Impact on User Experience |
 | ----- | ------- | ------------------------- |
-|**Category**|Classify the request type|Displays matching icon and enables filtering|
+|**Category**|Classify the request type|Displays a matching icon and specifies the data requested|
 |**Title**|Short, descriptive name|Shown in browser header and emails|
 |**Description**|Clear instructions|Displayed before screenshot capture|
 |**Example URL**|Reference link (optional)|Shows "See example" link to users|
@@ -41,7 +32,7 @@ Define the core requirements of your verification:
 Configure the initial user experience:
 | Setting | Description | Best Practice |
 | ----- | ------- | ------------------------- |
-|**Requester Name**|Your organization name|User your brand name for recognition|
+|**Requester Name**|Your organization name|Use your brand name for recognition|
 |**Button Text**|CTA button label (max 25 chars)|Action-oriented text like "Start Verification"|
 |**Notes**|Additional context|Keep brief - mention time required or benefits|
 
@@ -67,7 +58,7 @@ Control the verification process:
 | Feature | When Enabled | Use Case |
 | ----- | ------- | ------------------------- |
 |**Confirmation Modal**|Shows preview before submission|Reduces support tickets|
-|**Allow Redaction**|Blur tool for sensitive data|Privacy compliance|
+|**Allow Redaction**|Blackout tool for sensitive data|Privacy compliance|
 |**Include Screenshot**|Thumbnail on proof card|Quick visual verification|
 |**Blockchain Anchoring**|On-chain proof hash|Immutable verification|
 
@@ -85,7 +76,7 @@ Provide helpful information:
 
 ![Flow configuration webpage](/images/request-5.png)
 
-Customize notification email content after user completed the verification flow
+Customize notification email content after the user completes the verification flow
 
 ## Creating Request via API
 
@@ -96,9 +87,9 @@ POST https://app.inklink.com/api/request
 ```
 
 **Minimal Request**
-You can pass in optional fields to the request payload outlined in here {/* link to request page */}
+You can pass in optional fields to the request payload outlined [here](/api-reference/endpoint/create) {/* link to request page */}
 
-```JSON
+```JSON Required request body field
 {
   "proof_request_description": "Verify account ownership"
 }
@@ -113,9 +104,9 @@ You can pass in optional fields to the request payload outlined in here {/* link
 }
 ```
 
-## Tracking specific request session
+## Tracking Request Session
 
-If you need to track a particular user's request completion, you can use the following endpoint to create a unique `session_id` for tracking purposes.
+If you need to track a specific user's request status, use the following endpoint to create a unique `session_id`.
 
 ```Typescript
 POST https://app.inklink.com/api/request-session-id

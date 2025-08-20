@@ -1,11 +1,11 @@
 ---
 title: "Quickstart"
-description: "Follow these two steps to start requesting data verification"
+description: "Follow these steps to start requesting data verification"
 ---
 
 ## Step 1: Send an Http Request
 
-Define what data you need to collect and how it should be validated
+Define the data you need to verify
 
 ```shell Create a simple proof request
 curl --location 'https://app.inklink.com/api/request' \\
@@ -21,7 +21,7 @@ curl --location 'https://app.inklink.com/api/request' \\
 
 ### Response
 
-You'll receive a URL that you can share with users to complete the data request process
+The response contains the URL given to users to complete the data verification process
 
 ```json Http response
 {
@@ -30,9 +30,9 @@ You'll receive a URL that you can share with users to complete the data request 
 }
 ```
 
-### (Optional) Generate a Unique Tracking Session Id
+### (Optional) Generate a Session Id
 
-You can optionally create a unique `session_id` to track when a specific user completes their request.
+You can create a unique `session_id` to track when a specific user completes their request.
 
 ```shell
 curl --location 'https://app.inklink.com/api/request-session-id' \\
@@ -57,5 +57,12 @@ curl --location 'https://app.inklink.com/api/request-session-id' \\
 
 ```shell Get the completed request results
 curl --location 'https://app.inklink.com/api/request-result/req_xxx' \\
+--header 'x-api-key: secret_test_xxxx'
+```
+
+### Retrieve Session Results
+
+```shell Get the results of a specific user
+curl --location 'https://app.inklink.com/api/request-result/req_xxx?session_id=sid_xxx' \\
 --header 'x-api-key: secret_test_xxxx'
 ```
