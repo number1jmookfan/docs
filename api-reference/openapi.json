@@ -32,26 +32,26 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "proof_title": {
+                  "acceptance_level_guide": {
                     "type": "string",
-                    "example": "Dugong Image"
+                    "example": "To earn a high acceptance score, navigate to google images and search `dugong`"
                   },
                   "proof_request_description": {
                     "type": "string",
                     "example": "Prove this user can search for an image of a dugong"
                   },
-                  "acceptance_level_guide": {
+                  "proof_title": {
                     "type": "string",
-                    "example": "To earn a high acceptance score, navigate to google images and search `dugong`"
+                    "example": "Dugong Image"
                   }
                 }
               },
               "examples": {
                 "Create Request": {
                   "value": {
-                    "proof_title": "Dugong Image",
+                    "acceptance_level_guide": "To earn a high acceptance score, navigate to google images and search `dugong`",
                     "proof_request_description": "Prove this user can search for an image of a dugong",
-                    "acceptance_level_guide": "To earn a high acceptance score, navigate to google images and search `dugong`"
+                    "proof_title": "Dugong Image"
                   }
                 }
               }
@@ -60,8 +60,21 @@
         },
         "responses": {
           "200": {
-            "request_id": "req_xxx",
-            "request_url": "https://app.inklink.com/request/req_xxx"
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "request_id": { "type": "string", "example": "req_xxx" },
+                    "request_url": {
+                      "type": "string",
+                      "example": "https://app.inklink.com/request/req_xxx"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -82,36 +95,47 @@
           }
         ],
         "responses": {
-          "data": [
-            {
-              "id": "24d0a9aad41d54105527648315e66cbd",
-              "status": "PASSED",
-              "proof_name": "Dugong Image",
-              "acceptance_reason": "Search query and results are clearly visible and match the verification request",
-              "acceptance_category": "high",
-              "credibility_reason": "Clear evidence of Google image search with 'dugong' query and multiple dugong images in results",
-              "credibility_category": "high",
-              "created_at": "2025-08-18T17:22:36.375Z",
-              "claims": [
-                {
-                  "property": "Search Platform",
-                  "value": "Google"
-                },
-                {
-                  "property": "Search Query",
-                  "value": "Dugong"
-                },
-                {
-                  "property": "Search Results Show Dugong Images",
-                  "value": "True"
-                },
-                {
-                  "property": "Search Type",
-                  "value": "Images"
+          "200": {
+            "description": "Request results retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "string" },
+                          "status": { "type": "string", "example": "PASSED" },
+                          "proof_name": { "type": "string" },
+                          "acceptance_reason": { "type": "string" },
+                          "acceptance_category": { "type": "string" },
+                          "credibility_reason": { "type": "string" },
+                          "credibility_category": { "type": "string" },
+                          "created_at": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "claims": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "property": { "type": "string" },
+                                "value": { "type": "string" }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
-              ]
+              }
             }
-          ]
+          }
         }
       },
       "parameters": [
@@ -170,8 +194,21 @@
         },
         "responses": {
           "200": {
-            "session_id": "xxx",
-            "request_url": "https://app.inklink.com/request/req_xxx?session_id=xxx"
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "session_id": { "type": "string", "example": "xxx" },
+                    "request_url": {
+                      "type": "string",
+                      "example": "https://app.inklink.com/request/req_xxx?session_id=xxx"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
