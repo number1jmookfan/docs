@@ -23,7 +23,8 @@
             "schema": {
               "type": "string",
               "example": "secret_live_xxx"
-            }
+            },
+            "required": true
           }
         ],
         "requestBody": {
@@ -34,7 +35,7 @@
                 "properties": {
                   "acceptance_level_guide": {
                     "type": "string",
-                    "example": "To earn a high acceptance score, navigate to google images and search `octopus`"
+                    "example": "To earn a high acceptance score, navigate to google images and search 'octopus'"
                   },
                   "proof_request_description": {
                     "type": "string",
@@ -91,7 +92,8 @@
             "schema": {
               "type": "string",
               "example": "secret_live_xxx"
-            }
+            },
+            "required": true
           },
           {
             "name": "request_id",
@@ -178,7 +180,8 @@
             "schema": {
               "type": "string",
               "example": "{{vault:inklink dev key}}"
-            }
+            },
+            "required": true
           }
         ],
         "requestBody": {
