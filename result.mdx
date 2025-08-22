@@ -4,15 +4,55 @@ title: "Retrieving Results"
 
 After a user completes a request, retrieve the results using the `request_id` and optionally a `session_id` (if you want results from a specific session).
 
-**Request**
+To retrieve request results, use the following API:
 
 ```Typescript
 GET https://app.inklink.com/api/request-result/req_id?session_id=sid_xxx
 ```
 
+**Request**
+
+<CodeGroup>
+
+```shell curl
+curl --location 'https://app.inklink.com/api/request-result/req_xxx?session_id=sid_xxx' \\
+--header 'x-api-key: secret_test_xxxx'
+```
+
+```python Python
+import requests
+
+url = "https://app.inklink.com/api/request-result/req_xxx?session_id=sid_xxx"
+
+headers = {
+    "x-api-key": "secret_test_xxxx",
+}
+
+response = requests.get(url, headers=headers)
+
+print(response.json())
+```
+
+```typescript TypeScript
+const response = await fetch(
+  "https://app.inklink.com/api/request-result/req_xxx?session_id=sid_xxx",
+  {
+    method: "GET",
+    headers: {
+      "x-api-key": "secret_test_xxxx",
+    },
+  }
+);
+
+const data = await response.json();
+console.log(data);
+```
+
+</CodeGroup>
+
 **Response**
 
-```JSON
+```json JSON
 {
   "status": "PASSED",
   "claims": [
@@ -28,7 +68,7 @@ GET https://app.inklink.com/api/request-result/req_id?session_id=sid_xxx
   "acceptance_level": "HIGH",
   "acceptance_reason": "All validation criteria met",
   "credibility_level": "HIGH",
-  "credibility_reason": "Clear screenshot with matching user data",
+  "credibility_reason": "Clear screenshot with matching user data"
 }
 ```
 

@@ -34,24 +34,24 @@
                 "properties": {
                   "acceptance_level_guide": {
                     "type": "string",
-                    "example": "To earn a high acceptance score, navigate to google images and search `dugong`"
+                    "example": "To earn a high acceptance score, navigate to google images and search `octopus`"
                   },
                   "proof_request_description": {
                     "type": "string",
-                    "example": "Prove this user can search for an image of a dugong"
+                    "example": "Prove this user can search for an image of a octopus"
                   },
                   "proof_title": {
                     "type": "string",
-                    "example": "Dugong Image"
+                    "example": "Proof of Octopus Image"
                   }
                 }
               },
               "examples": {
                 "Create Request": {
                   "value": {
-                    "acceptance_level_guide": "To earn a high acceptance score, navigate to google images and search `dugong`",
-                    "proof_request_description": "Prove this user can search for an image of a dugong",
-                    "proof_title": "Dugong Image"
+                    "acceptance_level_guide": "To earn a high acceptance score, navigate to google images and search `octopus`",
+                    "proof_request_description": "Prove this user can search for an image of a octopus",
+                    "proof_title": "Proof of Octopus Image"
                   }
                 }
               }
@@ -147,7 +147,7 @@
                     {
                       "id": "24d0a9aad41d54105527648315e66cbd",
                       "status": "PASSED",
-                      "proof_name": "Dugong Image",
+                      "proof_name": "Proof of Octopus Image",
                       "acceptance_reason": "Search query and results are clearly visible",
                       "acceptance_category": "high",
                       "credibility_reason": "Clear evidence of Google image search",
@@ -155,7 +155,7 @@
                       "created_at": "2025-08-18T17:22:36.375Z",
                       "claims": [
                         { "property": "Search Platform", "value": "Google" },
-                        { "property": "Search Query", "value": "Dugong" }
+                        { "property": "Search Query", "value": "octopus" }
                       ]
                     }
                   ]
