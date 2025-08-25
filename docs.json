@@ -53,5 +53,8 @@
       "cursor",
       "vscode"
     ]
+  },
+  "styling": {
+    "codeblocks": "dark"
   }
 }
