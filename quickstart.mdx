@@ -145,7 +145,7 @@ console.log(data);
 
 ```shell curl
 curl https://app.inklink.com/api/request-result/req_xxx \
---header "x-api-key: $secret_test_xxx"
+    --header "x-api-key: $secret_test_xxx"
 ```
 
 ```python Python
@@ -185,8 +185,8 @@ Get the results of a specific user
 
 <CodeGroup>
   ```shell curl 
-  curl --location 'https://app.inklink.com/api/request-result/req_xxx?session_id=sid_xxx' \\
-  --header "x-api-key: $secret_test_xxx"
+  curl https://app.inklink.com/api/request-result/req_xxx?session_id=sid_xxx \
+      --header "x-api-key: $secret_test_xxx"
   ```
 
 ```python Python

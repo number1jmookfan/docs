@@ -6,17 +6,13 @@ After a user completes a request, retrieve the results using the `request_id` an
 
 To retrieve request results, use the following API:
 
-```Typescript
-GET https://app.inklink.com/api/request-result/req_id?session_id=sid_xxx
-```
-
 **Request**
 
 <CodeGroup>
 
 ```shell curl
-curl --location 'https://app.inklink.com/api/request-result/req_xxx?session_id=sid_xxx' \\
---header 'x-api-key: secret_test_xxxx'
+curl https://app.inklink.com/api/request-result/req_xxx?session_id=sid_xxx \
+    --header "x-api-key: $secret_test_xxx"
 ```
 
 ```python Python
@@ -25,7 +21,7 @@ import requests
 url = "https://app.inklink.com/api/request-result/req_xxx?session_id=sid_xxx"
 
 headers = {
-    "x-api-key": "secret_test_xxxx",
+    "x-api-key": "secret_test_xxx",
 }
 
 response = requests.get(url, headers=headers)
@@ -39,7 +35,7 @@ const response = await fetch(
   {
     method: "GET",
     headers: {
-      "x-api-key": "secret_test_xxxx",
+      "x-api-key": "secret_test_xxx",
     },
   }
 );
