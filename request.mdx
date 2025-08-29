@@ -102,8 +102,7 @@ curl https://app.inklink.com/api/request \
 '{
     "proof_request_description": "Verify Tesla ownership",
     "proof_title": "Vehicle Ownership Verification",
-    "category": "OWNERSHIP",
-    "return_url": "https://your-app.com/request-complete"
+    "category": "OWNERSHIP"
 }'
 ```
 
@@ -120,8 +119,7 @@ headers = {
 data = {
     "proof_request_description": "Verify Tesla ownership",
     "proof_title": "Vehicle Ownership Verification",
-    "category": "OWNERSHIP",
-    "return_url": "https://your-app.com/request-complete"
+    "category": "OWNERSHIP"
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -140,7 +138,6 @@ const response = await fetch("https://app.inklink.com/api/request", {
     proof_request_description: "Verify Tesla ownership",
     proof_title: "Vehicle Ownership Verification",
     category: "OWNERSHIP",
-    return_url: "https://your-app.com/request-complete",
   }),
 });
 
