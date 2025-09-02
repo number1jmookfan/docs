@@ -50,21 +50,28 @@ console.log(data);
 
 ```json JSON
 {
-  "status": "PASSED",
-  "claims": [
+  "data": [
     {
-      "property": "account_holder_name",
-      "value": "John Doe"
-    },
-    {
-      "property": "account_balance",
-      "value": "$12,345.67"
+      "id": "xxx",
+      "status": "PASSED",
+      "proof_name": "John Doe Account Balance",
+      "acceptance_reason": "All validation criteria met",
+      "acceptance_category": "high",
+      "credibility_reason": "Clear screenshot with matching user data",
+      "credibility_category": "high",
+      "created_at": "2025-09-02T17:09:12.559Z",
+      "claims": [
+        {
+          "property": "Is the Account Holder's Name Present?",
+          "value": "Yes"
+        },
+        {
+          "property": "Account Balance",
+          "value": "$12,345.67"
+        }
+      ]
     }
-  ],
-  "acceptance_level": "HIGH",
-  "acceptance_reason": "All validation criteria met",
-  "credibility_level": "HIGH",
-  "credibility_reason": "Clear screenshot with matching user data"
+  ]
 }
 ```
 
