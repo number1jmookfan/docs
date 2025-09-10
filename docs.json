@@ -19,7 +19,13 @@
           },
           {
             "group": "Guides",
-            "pages": ["request", "result", "error", "support"]
+            "pages": [
+              "request",
+              "multi-step-request",
+              "result",
+              "error",
+              "support"
+            ]
           }
         ]
       },
