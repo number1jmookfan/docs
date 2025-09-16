@@ -6,7 +6,7 @@ In addition to single proofs, InkLink also handles multi-step proofs in which a 
 
 ## Creating a Multi-Step Request
 
-To create a multi-step request, use the `/request` endpoint and add the `request-steps` array in the JSON body:
+To create a multi-step request, use the `/request` endpoint and add the `request-steps` array to the JSON body:
 
 <CodeGroup>
 ```bash curl highlight={9-11}
@@ -83,7 +83,6 @@ The `request_steps` array looks like this:
       "user_instruction": "Click on the capture button after you login",
       "trigger_signal": "https://www.linkedin.com/feed/",
       "redirect_url": null,
-      "redirect_message": null,
       "llm_instruction": null,
       "full_page": false,
       "claims": [
@@ -101,13 +100,11 @@ The `request_steps` array looks like this:
   ]
 ```
 
-| Value            | Description                                 |
-| ---------------- | ------------------------------------------- |
-| index            | The index of the request step               |
-| user_instruction | instructions given to the user at this step |
-| trigger_signal   | the url that triggers the instruction popup |
-| redirect_url     | the starting url for the request step       |
-| redirect_message | message shown while redirecting             |
-|                  |                                             |
+| Value            | Description                                     |
+| ---------------- | ----------------------------------------------- |
+| index            | The index of the request step                   |
+| user_instruction | The instructions given to the user at this step |
+| trigger_signal   | The url that triggers the instruction popup     |
+| redirect_url     | The starting url for the request step           |
 
-//TAKE OUT REDIRECT MESSAGE
+{/* | redirect_message | message shown while redirecting             | */}
